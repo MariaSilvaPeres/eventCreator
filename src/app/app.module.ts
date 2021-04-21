@@ -8,7 +8,8 @@ import {
   EventService,
   EventDetailsComponent,
   EventRouteActivator,
-  EventListResolver
+  EventListResolver,
+  CreateSessionComponent
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component';
@@ -30,25 +31,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EventDetailsComponent,
     CreateEventsComponent,
     Error404Component,
+    CreateSessionComponent,
   ],
   providers: [EventService,
     ToastrService,
     EventRouteActivator,
     EventListResolver,
     AuthService,
-  {
-    provide: 'canDeactivateCreateEvent',
-    useValue: checkDirtyState,
+    {
+      provide: 'canDeactivateCreateEvent',
+      useValue: checkDirtyState,
 
-  }
+    }
   ],
   bootstrap: [EventsAppComponent],
 })
-export class AppModule {}
+export class AppModule { }
 
-export function checkDirtyState(component:CreateEventsComponent) {
-   if (component.isDirty) {
-       return window.confirm('You have not saved this event, do you really want to cancel?')
-    }
+export function checkDirtyState(component: CreateEventsComponent) {
+  if (component.isDirty) {
+    return window.confirm('You have not saved this event, do you really want to cancel?')
+  }
   return true
 }

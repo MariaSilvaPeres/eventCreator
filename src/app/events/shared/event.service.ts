@@ -5,18 +5,24 @@ import { IEvent } from './event.model'
 @Injectable()
 export class EventService {
 
-  getEvents():Observable<IEvent[]> {
+  getEvents(): Observable<IEvent[]> {
     let subject = new Subject<IEvent[]>()
-    setTimeout(() => {subject.next(EVENTS); subject.complete(); },
-    100)
+    setTimeout(() => { subject.next(EVENTS); subject.complete(); },
+      100)
     return subject;
   }
-  getEvent(id: number):IEvent {
+  getEvent(id: number): IEvent {
     return EVENTS.find((event) => event.id === id);
+  }
+
+  saveEvent(event) {
+    event.id = 999
+    event.session = []
+    EVENTS.push(event)
   }
 }
 
-const EVENTS:IEvent[] = [
+const EVENTS: IEvent[] = [
   {
     id: 1,
     name: 'Angular Connect',
@@ -33,7 +39,7 @@ const EVENTS:IEvent[] = [
       {
         id: 1,
         name: 'Using Angular 4 Pipes',
-        presenter: 'Peter Bacon Darwin', 
+        presenter: 'Peter Bacon Darwin',
         duration: 1,
         level: 'Intermediate',
         abstract: `Learn all about the new pipes in Angular 4, both
@@ -56,7 +62,7 @@ const EVENTS:IEvent[] = [
       },
       {
         id: 3,
-        name: 'Angular 4 Performance Metrics', 
+        name: 'Angular 4 Performance Metrics',
         presenter: 'Rob Wormald',
         duration: 2,
         level: 'Advanced',
@@ -98,7 +104,7 @@ const EVENTS:IEvent[] = [
   {
     id: 2,
     name: 'ng-nl',
-    date: new Date ('4/15/2037'),
+    date: new Date('4/15/2037'),
     time: '9:00 am',
     price: 950.0,
     imageUrl: '/assets/images/ng-nl.png',
@@ -158,7 +164,7 @@ const EVENTS:IEvent[] = [
   {
     id: 3,
     name: 'ng-conf 2037',
-    date: new Date ('5/4/2037'),
+    date: new Date('5/4/2037'),
     time: '9:00 am',
     price: 759.0,
     imageUrl: '/assets/images/ng-conf.png',
@@ -214,8 +220,8 @@ const EVENTS:IEvent[] = [
       },
       {
         id: 5,
-        name: 'Dressed for Success', 
-        presenter:'Ward Bell',
+        name: 'Dressed for Success',
+        presenter: 'Ward Bell',
         duration: 2,
         level: 'Beginner',
         abstract: `Being a developer in 2037 is about more than just writing bug-free code.
@@ -240,7 +246,7 @@ const EVENTS:IEvent[] = [
   {
     id: 4,
     name: 'UN Angular Summit',
-    date: new Date ('6/10/2037'),
+    date: new Date('6/10/2037'),
     time: '8:00 am',
     price: 800.0,
     imageUrl: '/assets/images/basic-shield.png',
@@ -276,7 +282,7 @@ const EVENTS:IEvent[] = [
       {
         id: 3,
         name: 'Using Angular with Androids',
-        presenter: 'Dan Wahlin', 
+        presenter: 'Dan Wahlin',
         duration: 3,
         level: 'Advanced',
         abstract: `Androids may do everything for us now, allowing us to spend all day playing
@@ -289,7 +295,7 @@ const EVENTS:IEvent[] = [
   {
     id: 5,
     name: 'ng-vegas',
-    date: new Date ('2/10/2037'),
+    date: new Date('2/10/2037'),
     time: '9:00 am',
     price: 400.0,
     imageUrl: '/assets/images/ng-vegas.png',
