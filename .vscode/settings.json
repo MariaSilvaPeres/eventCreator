@@ -1,5 +1,12 @@
 {
     "workbench.productIconTheme": "Default",
     "javascript.format.insertSpaceAfterConstructor": true,
-    "prettier.embeddedLanguageFormatting": "off"
+    "prettier.embeddedLanguageFormatting": "off",
+    "editor.defaultFormatter": "mohd-akram.vscode-html-format",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
 }
