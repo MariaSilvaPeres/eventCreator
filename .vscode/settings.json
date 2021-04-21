@@ -1,3 +1,5 @@
 {
-    "workbench.productIconTheme": "fluent-icons"
+    "workbench.productIconTheme": "Default",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
 }
