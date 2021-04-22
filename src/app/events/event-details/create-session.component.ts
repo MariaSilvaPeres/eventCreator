@@ -1,8 +1,9 @@
-import { Component } from '@angular/core'
+import { Component, Output, EventEmitter } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { ISession } from '../shared/index'
+import { ISession, restrictedWords } from '../shared/index'
 
 @Component({
+  selector: 'create-session',
   templateUrl: 'create-session.component.html',
   styles: [
     `
@@ -35,6 +36,8 @@ import { ISession } from '../shared/index'
   ],
 })
 export class CreateSessionComponent {
+  @Output() saveNewSession = new EventEmitter()
+
   newSessionForm: FormGroup
   name: FormControl
   presenter: FormControl
@@ -49,7 +52,7 @@ export class CreateSessionComponent {
     this.level = new FormControl('', Validators.required)
     this.abstract = new FormControl('', [
       Validators.required,
-      Validators.maxLength(400), this.restrictedWords
+      Validators.maxLength(400), restrictedWords(['foo', 'bar'])
     ])
 
     this.newSessionForm = new FormGroup({
@@ -61,14 +64,10 @@ export class CreateSessionComponent {
     })
   }
 
-  private restrictedWords(control: FormControl): { [key: string]: any } {
-    return control.value.includes('foo')
-      ? { ' restrictedWords': 'foo' }
-      : null
-  }
 
   saveSession(formValues) {
     let session: ISession = {
+
       id: undefined,
       name: formValues.name,
       duration: +formValues.duration,
@@ -77,6 +76,9 @@ export class CreateSessionComponent {
       abstract: formValues.abstract,
       voters: [],
     }
-    console.log(session)
+    this.saveNewSession.emit(session)
   }
 }
+
+
+
