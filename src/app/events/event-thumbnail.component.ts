@@ -5,7 +5,7 @@ import { IEvent } from './shared/index'
   selector: 'event-thumbnail',
   template: `
     <div [routerLink]="['/events', event.id]" class="well hoverwell thumbnail">
-      <h2>{{ event.name }}</h2>
+      <h2>{{ event.name | uppercase }}</h2>
       <div>Date: {{ event.date }}</div>
       <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="event?.time">
         Time: {{ event?.time }}
@@ -13,7 +13,7 @@ import { IEvent } from './shared/index'
         <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
         <span *ngSwitchDefault>(Normal Time)</span>
       </div>
-      <div>Price: \${{ event.price }}</div>
+      <div>Price: {{ event.price | currency:'USD'}}</div>
       <div>
         <span>Location: {{ event.location.address }}</span>
         <span class="pad-left">
@@ -37,7 +37,7 @@ import { IEvent } from './shared/index'
   ],
 })
 export class EventThumbnailComponent {
-  @Input() event:IEvent;
+  @Input() event: IEvent;
 
   getStartTimeStyle(): any {
     if (this.event && this.event.time === '8:00 am')
