@@ -2,11 +2,19 @@
     "workbench.productIconTheme": "Default",
     "javascript.format.insertSpaceAfterConstructor": true,
     "prettier.embeddedLanguageFormatting": "off",
-    "editor.defaultFormatter": "mohd-akram.vscode-html-format",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
-    }
+    },
+    "html.format.wrapAttributes": "force-aligned",
+    "html.format.wrapAttributesIndentSize": 200,
+    "prettier.jsxBracketSameLine": true,
+    "prettier.resolveGlobalModules": true,
+    "prettier.useTabs": true,
+    "prettier.printWidth": 200,
+    "editor.formatOnSave": true,
+    "html.format.enable": false
 }
