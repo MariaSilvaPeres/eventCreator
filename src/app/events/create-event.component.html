@@ -86,7 +86,7 @@
     <div ngModelGroup="location">
       <div class="form-group">
         <label for="address">Event Location:</label>
-        <input (ngModel)="(newEvent.address)"
+        <input (ngModel)="(event.location.address)"
                name="address"
                id="address"
                type="text"
@@ -95,7 +95,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <input (ngModel)="(newEvent.city)"
+          <input (ngModel)="(event.location.city)"
                  name="city"
                  id="city"
                  type="text"
@@ -103,7 +103,7 @@
                  placeholder="City..." />
         </div>
         <div class="col-md-6">
-          <input (ngModel)="(newEvent.country)"
+          <input (ngModel)="(event.location.country)"
                  name="country"
                  id="country"
                  type="text"
@@ -115,7 +115,7 @@
 
     <div class="form-group">
       <label for="onlineUrl">Online Url:</label>
-      <input (ngModel)="(newEvent.onlineUrl)"
+      <input (ngModel)="(event.onlineUrl)"
              name="onlineUrl"
              id="onlineUrl"
              type="text"

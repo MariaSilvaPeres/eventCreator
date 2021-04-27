@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import {
   EventThumbnailComponent,
@@ -13,7 +14,8 @@ import {
   SessionListComponent,
   DurationPipe,
   UpVoteComponent,
-  VoterService
+  VoterService,
+  LocationValidator
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component';
@@ -31,7 +33,7 @@ let jQuery = window['$'];
 
 
 @NgModule({
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule, HttpClientModule],
   declarations: [
     EventsAppComponent,
     EventsListComponent,
@@ -46,7 +48,8 @@ let jQuery = window['$'];
     SimpleModalComponent,
     DurationPipe,
     ModalTriggerComponent,
-    UpVoteComponent
+    UpVoteComponent,
+    LocationValidator
 
   ],
   providers: [EventService,
