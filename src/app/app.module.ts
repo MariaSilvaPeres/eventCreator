@@ -8,23 +8,23 @@ import {
   EventsListComponent,
   EventService,
   EventDetailsComponent,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
   UpVoteComponent,
   VoterService,
-  LocationValidator
-} from './events/index'
+  LocationValidator,
+  EventResolver
+} from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
 import { NavbarComponent } from './nav/navbar/navbar.component';
-import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerComponent } from './events/common/index'
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerComponent } from './events/common/index';
 import { appRoutes } from './routes';
 import { CreateEventsComponent } from './events/create-event.components';
 import { Error404Component } from './error/404.component';
-import { AuthService } from './user/auth.service'
+import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -61,7 +61,7 @@ let jQuery = window['$'];
       provide: JQ_TOKEN,
       useValue: jQuery
     },
-    EventRouteActivator,
+    EventResolver,
     EventListResolver,
     AuthService, VoterService,
     {
