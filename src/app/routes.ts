@@ -4,7 +4,7 @@ import {
   EventDetailsComponent,
   EventsListComponent,
   CreateEventsComponent,
-
+  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   EventResolver
@@ -26,7 +26,7 @@ export const appRoutes: Routes = [
   {
     path: 'events/:id',
     component: EventDetailsComponent,
-    resolve: { event: EventResolver },
+    canActivate: [EventRouteActivator]
   },
   {
     path: 'events/session/new',

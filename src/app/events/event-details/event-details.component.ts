@@ -31,6 +31,13 @@ export class EventDetailsComponent implements OnInit {
     private eventService: EventService,
     private route: ActivatedRoute) { }
 
+  ngOnInit(): void {
+    this.route.params.forEach((params: Params) => {
+      this.event = this.eventService.getEvent(+params['id']);
+      this.addMode = false;
+    })
+  }
+
   addSession() {
     this.addMode = true;
   }
@@ -48,10 +55,5 @@ export class EventDetailsComponent implements OnInit {
     this.addMode = false
   }
 
-  ngOnInit(): void {
-    this.route.params.forEach((params: Params) => {
-      this.event = this.route.snapshot.data['event'];
-      this.addMode = false;
-    })
-  }
+
 }

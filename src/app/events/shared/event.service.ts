@@ -10,15 +10,16 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   getEvents(): Observable<IEvent[]> {
-    return this.http.get<IEvent[]>("/events")
-      .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])))
+    let subject = new Subject<IEvent[]>()
+    setTimeout(() => { subject.next(EVENTS); subject.complete(); },
+      100)
+    return subject;
   }
 
 
 
-  getEvent(id: number): Observable<IEvent> {
-    return this.http.get<IEvent>('/api/events' + id)
-      .pipe(catchError(this.handleError<IEvent>('getEvents')))
+  getEvent(id: number): IEvent {
+    return EVENTS.find((event) => event.id === id);
   }
 
   saveEvent(event) {

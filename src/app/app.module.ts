@@ -15,7 +15,8 @@ import {
   UpVoteComponent,
   VoterService,
   LocationValidator,
-  EventResolver
+  EventResolver,
+  EventRouteActivator
 } from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
@@ -49,7 +50,7 @@ let jQuery = window['$'];
     DurationPipe,
     ModalTriggerComponent,
     UpVoteComponent,
-    LocationValidator
+    LocationValidator,
 
   ],
   providers: [EventService,
@@ -68,7 +69,8 @@ let jQuery = window['$'];
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState,
 
-    }
+    },
+    EventRouteActivator
   ],
   bootstrap: [EventsAppComponent],
 })
